@@ -29,4 +29,5 @@ class Orbiter {
         bn::sprite_ptr _sprite;
         bn::fixed_point _velocity;
         Center& _center;
+        bn::fixed _angle;
 };

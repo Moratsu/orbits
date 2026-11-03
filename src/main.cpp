@@ -26,6 +26,9 @@ static constexpr bn::fixed_point ORBITER_START_VELOCITY = {0, 5};
 int main() {
     bn::core::init();
 
+    //Different background
+    bn::backdrop::set_color(bn::color(15, 5, 15));
+
     Center center = Center({30, 40}, .05, 2);
     bn::vector<Orbiter, MAX_ORBITERS> orbiters = {};
     
@@ -42,6 +45,11 @@ int main() {
             if(orbiters.size() > 0) {
                 orbiters.pop_back();
             }
+        }
+
+        // Removes all of the orbiters when Start is pressed
+        if(bn::keypad::start_pressed()) {
+            orbiters.clear();
         }
 
         center.update();

@@ -9,7 +9,8 @@ static constexpr bn::fixed FORCE_SCALE = 10;
 Orbiter::Orbiter(bn::fixed_point starting_location, bn::fixed_point starting_velocity, Center &center) :
     _sprite(bn::sprite_items::star.create_sprite(starting_location)),
     _velocity(starting_velocity),
-    _center(center) {
+    _center(center),
+    _angle(0) {
 }
 
 void Orbiter::update() {
@@ -27,4 +28,11 @@ void Orbiter::update() {
 
     // Update the position by taking a step by the velocity vector
     _sprite.set_position(_sprite.position() + _velocity);
+
+    //My personal touch to the game, makes the shurikens spin
+    _angle += 5;
+    if(_angle >= 360) {
+        _angle -= 360;
+    }
+    _sprite.set_rotation_angle(_angle);
 }

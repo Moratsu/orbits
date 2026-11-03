@@ -30,7 +30,7 @@ void Orbiter::update() {
     _sprite.set_position(_sprite.position() + _velocity);
 
     //My personal touch to the game, makes the shurikens spin
-    _angle += 5;
+    _angle += 10;
     if(_angle >= 360) {
         _angle -= 360;
     }
